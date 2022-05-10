@@ -1,10 +1,13 @@
 import Login from "@c/login";
+// import withAuth from "@utils/withAuth";
 
-function LoginPage() {
+const LoginPage = () => {
+  console.log("osman");
   return (
     <>
       <Login />
     </>
   );
-}
+};
+
 export default LoginPage;
