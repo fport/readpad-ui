@@ -1,0 +1,7 @@
+.error {
+  @apply full:container text-secondary mx-auto text-center text-36  xs:p-32 md:p-95;
+}
+
+.errorText {
+    @apply text-36 text-white;
+}
