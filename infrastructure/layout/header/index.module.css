@@ -1,0 +1,7 @@
+.container {
+    @apply flex w-full h-100 p-20;
+}
+
+.content {
+    @apply flex items-center justify-between w-full h-full bg-white p-40;
+}

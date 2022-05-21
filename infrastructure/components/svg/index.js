@@ -1,3 +1,4 @@
 import Postman from './postman';
+import Logo from './logo';
 
-export { Postman };
+export { Postman, Logo };

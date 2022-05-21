@@ -18,7 +18,7 @@ export default function Home() {
         <Link href="/login">Login</Link>
       </label>
       <h3>{JSON.stringify(sample)}</h3>
-      {/* <label htmlFor="my-modal" className="btn modal-button">
+      <label htmlFor="my-modal" className="btn modal-button">
         Osmana Tıkla
       </label>
       <input type="checkbox" id="my-modal" className="modal-toggle" />
@@ -32,7 +32,7 @@ export default function Home() {
             </label>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }

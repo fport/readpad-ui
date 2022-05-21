@@ -1,0 +1,3 @@
+.bg {
+    @apply full: container text-warning mx-auto text-center text-36 xs:p-32 md:p-95;
+}
