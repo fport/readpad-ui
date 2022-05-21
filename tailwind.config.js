@@ -14,16 +14,20 @@ module.exports = {
       xxl: "1536px",
     },
     width: {
+      64: "64px",
       100: "100px",
       200: "200px",
       400: "400px",
       full: "100%",
+      fit: "fit-content"
     },
     height: {
+      64: "64px",
       100: "100px",
       200: "200px",
       400: "400px",
       full: "100%",
+      fit: "fit-content"
     },
     maxWidth: {
       "1/4": "25%",
@@ -49,6 +53,7 @@ module.exports = {
       gray: "var(--gray-color)",
       background: "var(--background-color)",
       white: "var(--white)",
+      btnBacground: "var(--btn-bg)",
     },
     borderRadius: {
       none: "0px",
@@ -89,6 +94,7 @@ module.exports = {
       200: "200px",
       338: "338px",
       360: "360px",
+      "1/2": "50%"
     },
     zIndex: {},
     fontFamily: {
@@ -124,6 +130,8 @@ module.exports = {
     inset: {
       3: "3px",
       20: "20px",
+      10: "10px",
+      "1/2": "50%",
     },
     letterSpacing: {},
   },

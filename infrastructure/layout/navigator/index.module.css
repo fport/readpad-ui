@@ -1,0 +1,3 @@
+.container {
+    @apply flex bg-white shadow-md rounded-md w-fit fixed inset-x-1/2 bottom-10;
+}

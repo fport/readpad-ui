@@ -2,6 +2,8 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { getSampleData } from "../store/actions/sampleAction";
 import { useEffect } from "react";
+import Header from "@l/header";
+import Navigator from "@l/Navigator";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -14,6 +16,8 @@ export default function Home() {
 
   return (
     <div>
+      <Header />
+      <Navigator />
       <label htmlFor="my-modal" className="btn modal-button">
         <Link href="/login">Login</Link>
       </label>
