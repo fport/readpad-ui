@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSampleData } from "../store/actions/sampleAction";
 import { useEffect } from "react";
 import Header from "@l/header";
-import Navigator from "@l/Navigator";
+import Navigator from "@l/navigator";
 
 export default function Home() {
   const dispatch = useDispatch();
