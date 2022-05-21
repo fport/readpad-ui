@@ -12,13 +12,13 @@
   --info-color: #f4f6f9;
   --light-color: #f4f6f9;
   --gray-color: #272727;
-  --background-color: #272727;
+  --background-color: #F2F5F7;
   --white: #fff;
 }
 
 @layer base {
   body {
-    @apply bg-primary m-0 antialiased font-primary text-16 font-bold min-h-screen	;
+    @apply bg-background m-0 antialiased font-primary text-16 font-bold min-h-screen	;
   }
   a {
     @apply no-underline hover:text-secondary visited:text-secondary;

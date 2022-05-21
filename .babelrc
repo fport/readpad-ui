@@ -1,19 +1,27 @@
 {
-    "presets": [["next/babel", {}]],
-    "plugins": [
-      [
-        "module-resolver",
-        {
-          "root": ["./"],
-          "alias": {
-            "@c": "./components",
-            "@const": "./constants",
-            "@s": "./styles",
-            "@svg": "./components/svg",
-            "@cx": "./contexts/",
-            "@utils": "./utils"
-          }
-        }
-      ]
+  "presets": [
+    [
+      "next/babel",
+      {}
     ]
-  }
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./"
+        ],
+        "alias": {
+          "@c": "./infrastructure/components",
+          "@l": "./infrastructure/layout",
+          "@const": "./constants",
+          "@s": "./styles",
+          "@svg": "./infrastructure/components/svg",
+          "@cx": "./contexts/",
+          "@utils": "./utils"
+        }
+      }
+    ]
+  ]
+}
