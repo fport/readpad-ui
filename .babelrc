@@ -1,0 +1,27 @@
+{
+  "presets": [
+    [
+      "next/babel",
+      {}
+    ]
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./"
+        ],
+        "alias": {
+          "@c": "./infrastructure/components",
+          "@l": "./infrastructure/layout",
+          "@const": "./constants",
+          "@s": "./styles",
+          "@svg": "./infrastructure/components/svg",
+          "@cx": "./contexts/",
+          "@utils": "./utils"
+        }
+      }
+    ]
+  ]
+}

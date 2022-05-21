@@ -1,19 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+:root {
+  --primary-color: #707AE0;
+  --secondary-color: #5FF59B;
+  --shadow-color: #636363;
+  --danger-color: #e53549;
+  --warning-color: #ffcf5c;
+  --success-color: #00c48c;
+  --info-color: #f4f6f9;
+  --light-color: #f4f6f9;
+  --gray-color: #272727;
+  --background-color: #F2F5F7;
+  --white: #fff;
+  --btn-bg: #DCE9FC;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@layer base {
+  body {
+    @apply bg-background m-0 antialiased font-primary text-16 font-bold min-h-screen	;
+  }
+  a {
+    @apply no-underline hover:text-secondary visited:text-secondary;
+  }
+  li {
+    @apply list-none p-0;
+  }
+  ol,
+  ul {
+    @apply list-none m-0 p-0;
+  }
 }
 
-* {
-  box-sizing: border-box;
-} */
+a:link {
+  color: #5affc9;
+}

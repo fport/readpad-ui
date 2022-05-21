@@ -1,0 +1,7 @@
+.container {
+    @apply flex 
+}
+
+.btnWrapper {
+    @apply flex bg-btnBacground w-64 h-64 items-center justify-center rounded-md m-10 text-primary;
+}
