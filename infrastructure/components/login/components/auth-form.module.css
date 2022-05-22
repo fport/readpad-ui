@@ -1,0 +1,7 @@
+.authformWrapper {
+    @apply flex flex-col items-center justify-center h-1 w-3/10 bg-white;
+}
+
+.formWrapper {
+    @apply flex flex-col
+}
