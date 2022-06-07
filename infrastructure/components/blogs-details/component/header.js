@@ -1,13 +1,10 @@
-import React from 'react'
-import HeadImg from "./header.png"
+import styles from './header.module.css'
 
-const Header = () => {
+export default function Header() {
     return (
-        <div className="blogs-details-container-header">
-            <img src="https://picsum.photos/200/300" />
-            <p>Artist Feature: Malaysia</p>
+        <div className={styles.header}>
+            <img className={styles.headerImg} src='/header.png' />
+            <p className={styles.headerTitle}>Artist Feature: Malaysia</p>
         </div>
     )
 }
-
-export default Header

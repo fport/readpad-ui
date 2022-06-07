@@ -1,11 +1,9 @@
-import React        from 'react'
+import styles from './content.module.css'
 
-const Content = props => {
+export default function Content(props) {
     return (
-        <div className="blogs-details-container-content">
-            { props.children }
+        <div className={styles.contents}>
+            {props.children}
         </div>
     )
 }
-
-export default Content

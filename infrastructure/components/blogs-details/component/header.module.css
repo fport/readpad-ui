@@ -1,0 +1,11 @@
+.header {
+    @apply w-full max-w-1100 h-180 bg-info relative flex items-center justify-center mt-40 mb-40 rounded-sm;
+}
+
+.headerImg {
+    @apply absolute h-287 -left-41 bottom-0
+}
+
+.headerTitle {
+    @apply text-56 text-white
+}
