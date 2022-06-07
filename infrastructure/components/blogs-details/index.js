@@ -29,6 +29,10 @@ export default function BlogsDetails() {
                     Tüm bunlar gösteriyor ki, artan maliyetlere karşı azalan yolcu sayısı ile havayolu taşımacılığının normale dönmesi beklenenden daha uzun sürecek. Temmuz Ayının son iş gününü de böylece kapatıyoruz.
 
                     2 Ağustos'ta görüşmek üzere.</p>
+                <div className={styles.commentWrapper}>
+                    <span>Yorumlar</span>
+                    <input type="text" placeholder="Harika bir yazi olmus..." className={styles.commentInput} />
+                </div>
                 <div className={styles.authorInfo}>
                     <span>Furkan Portakal</span>
                     <span>Ekleme Tarihi : 1 Agustos 2020</span>
