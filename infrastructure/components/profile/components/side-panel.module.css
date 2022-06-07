@@ -1,0 +1,28 @@
+.container {
+    @apply flex flex-col w-200 h-500 mr-48 border-dashed border-r-2
+}
+
+.imgWrapper {
+    @apply flex items-center justify-center w-150 h-150 rounded-md bg-primary/75
+}
+
+.userImg {
+    @apply w-100 h-100
+}
+
+
+.userName {
+    @apply text-24 text-primary
+}
+
+.groupWrapper {
+    @apply flex items-center
+}
+
+.dot {
+    @apply h-16 w-16 bg-primary rounded-full inline-block mr-4 cursor-pointer
+}
+
+.groupTitle {
+    @apply text-14
+}

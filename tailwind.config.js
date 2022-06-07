@@ -14,8 +14,10 @@ module.exports = {
       xxl: "1536px",
     },
     width: {
+      16: "16px",
       64: "64px",
       100: "100px",
+      150: "150px",
       200: "200px",
       260: "260px",
       400: "400px",
@@ -32,6 +34,7 @@ module.exports = {
       fit: "fit-content"
     },
     height: {
+      16: "16px",
       20: "20px",
       64: "64px",
       100: "100px",
@@ -40,6 +43,7 @@ module.exports = {
       200: "200px",
       287: "287px",
       400: "400px",
+      500: "500px",
       full: "100%",
       1: "100vh",
       "1/10": "10%",
@@ -89,7 +93,7 @@ module.exports = {
       xl: "0.75rem",
       "2xl": "8px",
       "3xl": "50px",
-      full: "9999px",
+      full: "100%",
     },
     spacing: {
       default: "0.375rem 0.75rem",
