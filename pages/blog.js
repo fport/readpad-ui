@@ -1,24 +1,23 @@
-import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-import { getSampleData } from "../store/actions/sampleAction";
-import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { getSampleData } from "../store/actions/sampleAction";
+// import { useEffect } from "react";
 import Header from "@l/header";
 import Navigator from "@l/navigator";
 import Blogs from "@c/blogs";
 
 export default function Blog() {
-  const dispatch = useDispatch();
-  const sampleListData = useSelector((state) => state.sampleData);
-  const { sample } = sampleListData;
+  // const dispatch = useDispatch();
+  // const sampleListData = useSelector((state) => state.sampleData);
+  // const { sample } = sampleListData;
 
-  useEffect(() => {
-    dispatch(getSampleData());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getSampleData());
+  // }, [dispatch]);
 
   return (
     <div>
       <Header />
-      <Blogs/>
+      <Blogs />
       <Navigator />
     </div>
   );
