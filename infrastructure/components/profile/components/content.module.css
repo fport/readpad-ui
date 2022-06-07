@@ -1,0 +1,3 @@
+.contents {
+    @apply flex flex-wrap items-start w-full max-w-1100
+}

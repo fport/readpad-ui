@@ -1,0 +1,32 @@
+.wrapper {
+    @apply flex flex-col items-start justify-between w-260 h-400 bg-white p-4 mb-24 shadow-md
+}
+
+.desc {
+    @apply w-full h-100
+}
+
+.blogImg {
+    @apply w-full h-150 bg-warning
+}
+
+.blogTitle {
+    @apply text-21 text-primary
+}
+
+.blogDesc {
+    @apply overflow-hidden text-ellipsis text-14 text-justify
+}
+
+.dirc {
+    @apply flex items-center justify-between w-full h-20
+}
+
+.readMore {
+    @apply inline-flex flex-1 items-center
+}
+
+
+.time {
+    @apply flex justify-end
+}

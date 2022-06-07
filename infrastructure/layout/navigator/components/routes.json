@@ -10,7 +10,7 @@
         {
             "id": "2",
             "title": "Bloklar",
-            "route": "/blogs",
+            "route": "/blog",
             "persimmon": "public",
             "icon": "List"
         },

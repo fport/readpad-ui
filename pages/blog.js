@@ -3,9 +3,9 @@
 // import { useEffect } from "react";
 import Header from "@l/header";
 import Navigator from "@l/navigator";
-import Landing from "@c/landing";
+import Blogs from "@c/blogs";
 
-export default function Home() {
+export default function Blog() {
   // const dispatch = useDispatch();
   // const sampleListData = useSelector((state) => state.sampleData);
   // const { sample } = sampleListData;
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <Landing />
+      <Blogs />
       <Navigator />
     </div>
   );

@@ -1,0 +1,27 @@
+.container {
+    @apply flex flex-col items-center
+}
+
+.content {
+    @apply flex flex-col max-w-1100 mb-200
+}
+
+.landingHeader {
+    @apply flex flex-col mb-20
+}
+
+.title {
+    @apply text-h1 text-center
+}
+
+.titleWelcome {
+    @apply text-h1 text-primary text-center
+}
+
+.desc {
+    @apply text-24 text-center
+}
+
+.langingBlogs {
+    @apply h-300 mb-10
+}

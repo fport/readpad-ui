@@ -1,0 +1,19 @@
+.subTitle {
+    @apply text-21 mb-40
+}
+
+.blogContent {
+    @apply text-16 text-justify
+}
+
+.authorInfo {
+    @apply flex flex-col w-full items-end mt-32 mb-95
+}
+
+.commentWrapper {
+    @apply flex flex-col mt-10
+}
+
+.commentWrapper {
+    @apply w-full h-20
+}

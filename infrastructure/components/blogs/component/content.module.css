@@ -1,0 +1,3 @@
+.content {
+    @apply flex flex-wrap items-start justify-between w-full max-w-1100;
+}
