@@ -1,0 +1,11 @@
+.container {
+    @apply p-20
+}
+
+.title {
+    @apply text-24 pl-10
+}
+
+.langingBlogs {
+    @apply h-200 mb-10
+}
