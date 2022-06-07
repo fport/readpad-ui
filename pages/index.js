@@ -4,7 +4,7 @@ import { getSampleData } from "../store/actions/sampleAction";
 import { useEffect } from "react";
 import Header from "@l/header";
 import Navigator from "@l/navigator";
-import Blogs from "@c/blogs";
+import Landing from "@c/landing";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <Blogs/>
+      <Landing />
       <Navigator />
     </div>
   );
