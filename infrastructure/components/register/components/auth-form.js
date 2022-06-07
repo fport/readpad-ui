@@ -9,11 +9,6 @@ export default function AuthForm() {
     Router.push('/profile')
   }
 
-  const register = (values) => {
-    console.log('osman');
-    Router.push('/register')
-  }
-
 
   const formik = useFormik({
     initialValues: {
@@ -27,8 +22,27 @@ export default function AuthForm() {
   });
   return (
     <div className={styles.authformWrapper}>
-      <div> Giris Yap</div>
       <form className={styles.formWrapper} onSubmit={formik.handleSubmit}>
+        <label htmlFor="firstName">Isim</label>
+        <input
+          id="firstName"
+          name="firstName"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.firstName}
+          className="input input-bordered my-8 input-info w-full max-w-xs"
+        />
+
+        <label htmlFor="lastName">Soyisim</label>
+        <input
+          id="lastName"
+          name="lastName"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.lastName}
+          className="input input-bordered my-8 input-info w-full max-w-xs"
+        />
+
         <label className="mt-5" htmlFor="email">Email</label>
         <input
           id="email"
@@ -49,9 +63,9 @@ export default function AuthForm() {
           className="input input-bordered my-8 input-info w-full max-w-xs"
         />
 
-        <button onClick={() => login()} type="submit">Giris Yap</button>
+
+        <button type="submit">Uye Ol</button>
       </form>
-      <button onClick={() => register()}>Uye Ol</button>
     </div>
   );
 }
