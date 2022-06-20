@@ -4,11 +4,14 @@ import Router from 'next/router'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { register } from '@redux/actions/userAction'
+import { useEffect } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function AuthForm() {
     const dispatch = useDispatch()
     const userInfoData = useSelector((state) => state.userInfo)
-    const { userInfo } = userInfoData
+    const { isSuccesful } = userInfoData
 
     const login = (formData) => {
         dispatch(register(formData))
@@ -28,10 +31,16 @@ export default function AuthForm() {
             password: '',
             phoneNumber: ''
         },
-        onSubmit: (values) => {
-            login(values)
+        onSubmit: (values, { resetForm }) => {
+            login(values), resetForm()
         }
     })
+
+    useEffect(() => {
+        if (isSuccesful) {
+            // Router.push('/login')
+        }
+    }, [isSuccesful])
 
     return (
         <div className={styles.authformWrapper}>
