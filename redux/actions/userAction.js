@@ -13,7 +13,8 @@ import {
 } from '../constants/userConstant'
 
 // REGISTER
-export const register = ({ name, email, password }) => async (dispatch) => {
+export const register = (registerData) => async (dispatch) => {
+    console.log('osman register', registerData)
     try {
         dispatch({
             type: USER_REGISTER_REQUEST
@@ -25,7 +26,17 @@ export const register = ({ name, email, password }) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post('/api/users', { name, email, password }, config)
+        const { data } = await axios.post(
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user`,
+            {
+                user_name: registerData.firstName,
+                user_surname: registerData.lastName,
+                user_email: registerData.email,
+                user_password: registerData.password,
+                user_phonenumber: registerData.phoneNumber
+            },
+            config
+        )
 
         dispatch({
             type: USER_REGISTER_SUCCESS,
@@ -41,8 +52,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: USER_REGISTER_FAIL,
-            payload:
-                error.response && error.response.data.message ? error.response.data.message : error.message
+            payload: 'Register failed'
         })
     }
 }
@@ -71,8 +81,7 @@ export const login = (email, password) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: USER_LOGIN_FAIL,
-            payload:
-                error.response && error.response.data.message ? error.response.data.message : error.message
+            payload: 'Login failed'
         })
     }
 }

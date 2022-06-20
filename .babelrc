@@ -19,6 +19,7 @@
           "@s": "./styles",
           "@svg": "./infrastructure/components/svg",
           "@cx": "./contexts/",
+          "@redux": "./redux",
           "@utils": "./utils"
         }
       }
