@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '@utils/axios'
 import {
     USER_REGISTER_REQUEST,
     USER_REGISTER_SUCCESS,
@@ -9,6 +9,8 @@ import {
     USER_LOGOUT
 } from '../constants/userConstant'
 import { TOAST_ACTION_SUCCESS, TOAST_ACTION_CLEAR } from '../constants/runtimeConstant'
+import cookiesUtils from '@utils/cookies'
+import Router from 'next/router'
 
 // REGISTER
 export const register = (registerData) => async (dispatch) => {
@@ -16,12 +18,6 @@ export const register = (registerData) => async (dispatch) => {
         dispatch({
             type: USER_REGISTER_REQUEST
         })
-
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
 
         const mappedData = {
             user_name: registerData.firstName,
@@ -31,76 +27,110 @@ export const register = (registerData) => async (dispatch) => {
             user_phonenumber: registerData.phoneNumber
         }
 
-        const { data } = await axios.post(
-            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user`,
-            mappedData,
-            config
-        )
-
-        dispatch({
-            type: USER_REGISTER_SUCCESS,
-            payload: {
-                isSuccesful: data?.massage && true,
-                message: data?.massage
+        const res = await axios('user', { method: 'POST', data: { ...mappedData } }).then(
+            (response) => {
+                dispatch({
+                    type: USER_REGISTER_SUCCESS,
+                    payload: {
+                        isSuccesful: response?.data?.massage && true,
+                        message: response?.data?.massage
+                    }
+                })
+                dispatch({
+                    type: TOAST_ACTION_SUCCESS,
+                    payload: response?.data?.massage
+                })
+                setTimeout(() => {
+                    dispatch({
+                        type: TOAST_ACTION_CLEAR
+                    })
+                }, 1000)
             }
+        )
+    } catch (error) {
+        console.error('osman error', error)
+        dispatch({
+            type: USER_REGISTER_FAIL,
+            payload: 'Register failed'
         })
-
         dispatch({
             type: TOAST_ACTION_SUCCESS,
-            payload: data?.massage
+            payload: 'Register failed'
         })
-
-        dispatch({
-            type: TOAST_ACTION_SUCCESS,
-            payload: data?.massage
-        })
-
         setTimeout(() => {
             dispatch({
                 type: TOAST_ACTION_CLEAR
             })
         }, 1000)
-
-        localStorage.setItem('userInfo', JSON.stringify(data))
-    } catch (error) {
-        dispatch({
-            type: USER_REGISTER_FAIL,
-            payload: 'Register failed'
-        })
     }
 }
 
 // LOGIN
-export const login = (email, password) => async (dispatch) => {
+export const login = (loginData) => async (dispatch) => {
     try {
         dispatch({
             type: USER_LOGIN_REQUEST
         })
 
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
+        const mappedData = {
+            user_email: loginData.email,
+            user_password: loginData.password
         }
 
-        const { data } = await axios.post('/api/users/login', { email, password }, config)
+        await axios('user/login', {
+            method: 'POST',
+            data: { ...mappedData }
+        }).then((response) => {
+            dispatch({
+                type: USER_LOGIN_SUCCESS,
+                payload: {
+                    isAuth: response?.data?.isAuth,
+                    isLoggedIn: response?.data?.isLoggedIn,
+                    loginTime: response?.data?.loginTime,
+                    email: response?.data?.userEmail,
+                    name: response?.data?.userNameuserSurname,
+                    id: response?.data?.user_id
+                }
+            })
 
-        dispatch({
-            type: USER_LOGIN_SUCCESS,
-            payload: data
+            dispatch({
+                type: TOAST_ACTION_SUCCESS,
+                payload: response?.data?.token && 'Login success'
+            })
+            setTimeout(() => {
+                dispatch({
+                    type: TOAST_ACTION_CLEAR
+                })
+            }, 1000)
+
+            cookiesUtils.setAuthorisedUser(response?.data?.token)
+
+            const removedTokenData = response?.data
+            delete removedTokenData?.token
+            localStorage.setItem('userInfo', JSON.stringify(removedTokenData))
+
+            Router.push('/')
         })
-
-        localStorage.setItem('userInfo', JSON.stringify(data))
     } catch (error) {
         dispatch({
             type: USER_LOGIN_FAIL,
-            payload: 'Login failed'
+            payload: error?.message
         })
+        dispatch({
+            type: TOAST_ACTION_SUCCESS,
+            payload: error?.message
+        })
+        setTimeout(() => {
+            dispatch({
+                type: TOAST_ACTION_CLEAR
+            })
+        }, 1000)
     }
 }
 
 //LOGOUT
 export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo')
+    cookiesUtils.logout()
     dispatch({ type: USER_LOGOUT })
 }

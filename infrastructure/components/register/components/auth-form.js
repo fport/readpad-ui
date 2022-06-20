@@ -5,17 +5,11 @@ import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { register } from '@redux/actions/userAction'
 import { useEffect } from 'react'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 export default function AuthForm() {
     const dispatch = useDispatch()
     const userInfoData = useSelector((state) => state.userInfo)
     const { isSuccesful } = userInfoData
-
-    const login = (formData) => {
-        dispatch(register(formData))
-    }
 
     const formik = useFormik({
         validationSchema: Yup.object({
@@ -36,9 +30,13 @@ export default function AuthForm() {
         }
     })
 
+    const login = (formData) => {
+        dispatch(register(formData))
+    }
+
     useEffect(() => {
         if (isSuccesful) {
-            // Router.push('/login')
+            Router.push('/login')
         }
     }, [isSuccesful])
 

@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types'
 
 function Button({ size, colorType }) {
-    console.log('size', size)
-
     const createClassName = () => {
         let classNames = ['btn']
 
