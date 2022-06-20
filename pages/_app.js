@@ -1,5 +1,5 @@
 import "@s/globals.css";
-import { wrapper, store } from "../store/store";
+import { wrapper, store } from "../redux/store";
 import { Provider } from "react-redux";
 
 /* eslint-disable react/prop-types */
