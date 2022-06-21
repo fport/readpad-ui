@@ -2,11 +2,9 @@ import React from 'react'
 import styles from './modal.module.css'
 import { X } from 'react-feather'
 import { useFormik } from 'formik'
-import Router from 'next/router'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import { create } from '@redux/actions/blogAction'
-import { useEffect } from 'react'
 
 export default function Modal(props) {
     const p = props

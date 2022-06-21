@@ -4,7 +4,11 @@ export default function SidePanel(props) {
     const p = props
 
     const renderModalButton = () => {
-        return <button onClick={() => p.changeShowModal()}>Yeni Yazi Olustur</button>
+        return (
+            <button className={styles.createBlogBtn} onClick={() => p.changeShowModal()}>
+                Yeni Yazi Olustur
+            </button>
+        )
     }
 
     return (

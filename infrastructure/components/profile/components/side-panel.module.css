@@ -26,3 +26,7 @@
 .groupTitle {
     @apply text-14
 }
+
+.createBlogBtn {
+    @apply btn btn-sm mt-10 mr-2
+}
