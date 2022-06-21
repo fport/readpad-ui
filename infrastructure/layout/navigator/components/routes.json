@@ -4,21 +4,21 @@
             "id": "1",
             "title": "Anasayfa",
             "route": "/",
-            "persimmon": "public",
+            "permison": "public",
             "icon": "Airplay"
         },
         {
             "id": "2",
             "title": "Bloklar",
             "route": "/blog",
-            "persimmon": "public",
+            "permison": "public",
             "icon": "List"
         },
         {
             "id": "3",
             "title": "Profil",
             "route": "/profile",
-            "persimmon": "public",
+            "permison": "private",
             "icon": "User"
         }
     ]
