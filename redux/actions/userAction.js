@@ -48,7 +48,6 @@ export const register = (registerData) => async (dispatch) => {
             }
         )
     } catch (error) {
-        console.error('osman error', error)
         dispatch({
             type: USER_REGISTER_FAIL,
             payload: 'Register failed'
