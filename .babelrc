@@ -20,7 +20,8 @@
           "@svg": "./infrastructure/components/svg",
           "@cx": "./contexts/",
           "@redux": "./redux",
-          "@utils": "./common/utils"
+          "@utils": "./common/utils",
+          "@hooks": "./common/hooks"
         }
       }
     ]
