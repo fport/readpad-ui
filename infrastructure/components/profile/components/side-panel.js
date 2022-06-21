@@ -11,6 +11,14 @@ export default function SidePanel(props) {
         )
     }
 
+    const logoutModalButton = () => {
+        return (
+            <button className={styles.createBlogBtn} onClick={() => p.logoutUser()}>
+                Cikis Yap
+            </button>
+        )
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.imgWrapper}>
@@ -32,6 +40,7 @@ export default function SidePanel(props) {
                 </div>
             </div>
             {renderModalButton()}
+            {logoutModalButton()}
         </div>
     )
 }
