@@ -1,0 +1,27 @@
+.container {
+    @apply w-750 max-w-750 left-0 right-0 top-20 mx-auto justify-start items-center flex flex-col inset-0 z-50 outline-none absolute bg-white max-h-fit shadow min-h-[50%] h-9/10 rounded
+}
+
+.header {
+    @apply flex flex-wrap items-center justify-between w-full h-50 bg-primary rounded-t p-10 text-white
+}
+
+.content {
+    @apply flex flex-wrap items-start w-full  flex-1 
+}
+
+.blogWrapper {
+    @apply flex flex-col items-center justify-center h-full w-full bg-primary/50 rounded-b
+}
+
+.formWrapper {
+    @apply flex flex-col w-full p-20 max-w-400 text-16
+}
+
+.btnWrapper {
+    @apply flex flex-col items-center justify-center  bg-primary/50 rounded w-full h-64 mt-10
+}
+
+.inputWrapper {
+    @apply input input-bordered my-4 input-info w-full
+}

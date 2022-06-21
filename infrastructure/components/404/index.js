@@ -6,7 +6,7 @@ function ErrorComponent() {
 
     return (
         <div className={styles.error}>
-            <p className={styles.errorText}>Aradığınız bulunamadı</p>
+            <span className={styles.errorText}>Aradığınız bulunamadı</span>
         </div>
     )
 }

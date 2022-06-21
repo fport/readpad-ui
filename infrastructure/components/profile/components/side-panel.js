@@ -1,10 +1,28 @@
 import styles from './side-panel.module.css'
 
-export default function SidePanel() {
+export default function SidePanel(props) {
+    const p = props
+
+    const renderModalButton = () => {
+        return (
+            <button className={styles.createBlogBtn} onClick={() => p.changeShowModal()}>
+                Yeni Yazi Olustur
+            </button>
+        )
+    }
+
+    const logoutModalButton = () => {
+        return (
+            <button className={styles.createBlogBtn} onClick={() => p.logoutUser()}>
+                Cikis Yap
+            </button>
+        )
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.imgWrapper}>
-                <img className={styles.userImg} src='/user.png' />
+                <img className={styles.userImg} src="/user.png" />
             </div>
             <div className={styles.infoWrapper}>
                 <span className={styles.userName}>Osman Abi</span>
@@ -21,6 +39,8 @@ export default function SidePanel() {
                     <span className={styles.groupTitle}>Yorumlarim</span>
                 </div>
             </div>
+            {renderModalButton()}
+            {logoutModalButton()}
         </div>
     )
 }

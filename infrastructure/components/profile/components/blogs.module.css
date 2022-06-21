@@ -1,11 +1,31 @@
 .container {
-    @apply p-20
+    @apply flex flex-col flex-1 h-fit p-20 mb-95
 }
 
 .title {
-    @apply text-24 pl-10
+    @apply text-24 pl-10 w-full h-64 bg-primary rounded mb-20
 }
 
 .langingBlogs {
     @apply h-200 mb-10
+}
+
+.blogWrapper {
+    @apply grid grid-rows-4 grid-flow-col gap-4 h-full  justify-around	
+}
+
+.blog {
+    @apply flex w-200 h-200 mb-10 shadow bg-secondary rounded-sm  items-center justify-center text-center
+}
+
+.blogTitle {
+    @apply text-center text-primary text-21 uppercase
+}
+
+.blogSummary {
+    @apply text-center text-white text-14
+}
+
+.blogButton {
+    @apply flex btn btn-primary btn-sm mt-10
 }
