@@ -23,7 +23,7 @@
 }
 
 .blogSummary {
-    @apply text-center text-white text-14
+    @apply text-center text-white text-14 max-h-[100px] overflow-hidden
 }
 
 .blogButton {
