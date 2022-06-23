@@ -173,7 +173,8 @@ module.exports = {
             10: '10px',
             41: '41px',
             50: '50',
-            '1/2': '50%'
+            '1/2': '50%',
+            auto: 'auto'
         },
         letterSpacing: {}
     },
