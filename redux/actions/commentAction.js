@@ -75,7 +75,6 @@ export const getCommentsBlog =
             // }
 
             const res = await axios(`comment/all/${id}`, { method: 'GET' }).then((response) => {
-                console.log('response', response?.data?.data)
                 dispatch({
                     type: GET_COMMENT_SUCCESS,
                     payload: {

@@ -1,6 +1,7 @@
 import styles from './blogs.module.css'
 import { useMemo } from 'react'
 import { Trash, Edit } from 'react-feather'
+import Link from 'next/link'
 
 export default function Blogs({ blogs }) {
     const renderBlogs = useMemo(() => {
@@ -9,7 +10,9 @@ export default function Blogs({ blogs }) {
                 <>
                     <h2 className={styles.blogTitle}>{blog.blog_title}</h2>
                     <span className={styles.blogSummary}>{blog.blog_summary}</span>
-                    <button className={styles.blogButton}>Goruntule</button>
+                    <Link href={`/blog/${blog.blog_id}`}>
+                        <button className={styles.blogButton}>Goruntule</button>
+                    </Link>
                     <div className={styles.actionWrapper}>
                         <span className={styles.iconWrapper}>
                             <Trash />
