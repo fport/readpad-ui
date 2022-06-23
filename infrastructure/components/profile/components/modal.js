@@ -4,13 +4,13 @@ import { X } from 'react-feather'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
-import { create } from '@redux/actions/blogAction'
+import { create, getUserBlogs } from '@redux/actions/blogAction'
 
 export default function Modal(props) {
     const p = props
     const dispatch = useDispatch()
     const userInfoData = useSelector((state) => state.userInfo)
-    const { name, id } = userInfoData?.userInfo
+    const { name, id, user_id, userNameuserSurname } = userInfoData?.userInfo
 
     const formik = useFormik({
         validationSchema: Yup.object({
@@ -32,22 +32,18 @@ export default function Modal(props) {
         dispatch(
             create({
                 ...formData,
-                author: name,
-                id: id
+                author: name || userNameuserSurname,
+                id: id || user_id
             })
         )
+        setTimeout(() => {
+            dispatch(
+                getUserBlogs({
+                    id: id || user_id
+                })
+            )
+        }, 1000)
     }
-
-    // const osman = () => {
-    //     document.getElementById('body')?.scrollTop(0).scrollIntoView({ behavior: 'smooth' })
-    // }
-
-    // useEffect(() => {
-    //     if (window !== 'undefined') {
-    //         console.log('osman')
-    //         osman()
-    //     }
-    // }, [])
 
     return (
         <>

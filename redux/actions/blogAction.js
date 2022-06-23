@@ -11,6 +11,8 @@ import {
     GET_ALL_BLOGS_FAIL
 } from '../constants/blogAction'
 import { TOAST_ACTION_SUCCESS, TOAST_ACTION_CLEAR } from '../constants/runtimeConstant'
+import { Cookies } from 'react-cookie'
+const cookies = new Cookies()
 
 // BLOG CREATE
 export const create = (createData) => async (dispatch) => {
@@ -45,10 +47,6 @@ export const create = (createData) => async (dispatch) => {
                         type: TOAST_ACTION_CLEAR
                     })
                 }, 1000)
-
-                setTimeout(() => {
-                    getUserBlogs({ id: createData.id })
-                }, 1000)
             }
         )
     } catch (error) {
@@ -77,6 +75,11 @@ export const getUserBlogs =
                 type: GET_USER_BLOGS_REQUEST
             })
 
+            // const token = cookies.get('AUTH_TOKEN')
+            // if (token) {
+            //     axios.defaults.headers.common.Authorization = `Bearer ${token}`
+            // }
+
             const res = await axios(`blog/${id}`, { method: 'GET' }).then((response) => {
                 dispatch({
                     type: GET_USER_BLOGS_SUCCESS,
@@ -85,6 +88,9 @@ export const getUserBlogs =
                         data: response?.data?.data
                     }
                 })
+
+                localStorage.setItem('blogInfo', JSON.stringify(response?.data?.data))
+
                 dispatch({
                     type: TOAST_ACTION_SUCCESS,
                     payload: response?.data?.massage
@@ -127,6 +133,8 @@ export const getAllBlogs = () => async (dispatch) => {
                     data: response?.data?.data
                 }
             })
+
+            localStorage.setItem('blogList', JSON.stringify(response?.data?.data))
         })
     } catch (error) {
         dispatch({

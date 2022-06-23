@@ -5,6 +5,9 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
+import { Cookies } from 'react-cookie'
+const cookies = new Cookies()
+import axios from '@utils/axios'
 
 /* eslint-disable react/prop-types */
 function MyApp({ Component, pageProps }) {
@@ -16,6 +19,13 @@ function MyApp({ Component, pageProps }) {
             toast(message)
         }
     }, [runtimeData])
+
+    useEffect(() => {
+        const token = cookies.get('AUTH_TOKEN')
+        if (token) {
+            axios.defaults.headers.common.Authorization = `Bearer ${token}`
+        }
+    }, [])
 
     return (
         <>

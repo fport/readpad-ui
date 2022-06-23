@@ -1,15 +1,14 @@
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { createWrapper } from "next-redux-wrapper";
-import rootReducer from "../reducer";
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import { createWrapper } from 'next-redux-wrapper'
+import rootReducer from '../reducer'
 
 // initial states here
-let initalState = {};
+let initalState = {}
 
 // middleware
-const middleware = [thunk];
-
+const middleware = [thunk]
 
 /* 
     If he has logged into localstorage before, we add it to localstorage and
@@ -21,9 +20,19 @@ if (typeof window !== 'undefined') {
     const userInfoFromStorage = localStorage.getItem('userInfo')
         ? JSON.parse(localStorage.getItem('userInfo'))
         : null
+    const blogInfoFromStorage = localStorage.getItem('blogInfo')
+        ? JSON.parse(localStorage.getItem('blogInfo'))
+        : null
+    const blogListFromStorage = localStorage.getItem('blogList')
+        ? JSON.parse(localStorage.getItem('blogList'))
+        : null
 
     initalState = {
-        userInfo: { userInfo: userInfoFromStorage }
+        userInfo: { userInfo: userInfoFromStorage },
+        blogInfo: {
+            blogs: blogInfoFromStorage,
+            blogList: blogListFromStorage
+        }
     }
 }
 
@@ -32,9 +41,9 @@ export const store = createStore(
     rootReducer,
     initalState,
     composeWithDevTools(applyMiddleware(...middleware))
-);
+)
 
 // assigning store to next wrapper
-const makeStore = () => store;
+const makeStore = () => store
 
-export const wrapper = createWrapper(makeStore);
+export const wrapper = createWrapper(makeStore)
