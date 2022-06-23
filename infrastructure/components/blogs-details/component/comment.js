@@ -4,7 +4,7 @@ import { Send } from 'react-feather'
 
 export default function Comment(props) {
     const p = props
-
+    console.log('p.commentList', p.commentList)
     const renderInput = useMemo(() => {
         return (
             <input
@@ -27,6 +27,15 @@ export default function Comment(props) {
                 <button className={styles.btnWrapper} onClick={() => p.submitComment()}>
                     <Send />
                 </button>
+            </div>
+
+            <div className={styles.commentListWrapper}>
+                {p.commentList?.map((d) => (
+                    <div className={styles.comment}>
+                        <span className={styles.author}>{d?.comment_author}</span>
+                        <p className={styles.content}>{d?.comment_content}</p>
+                    </div>
+                ))}
             </div>
         </div>
     )

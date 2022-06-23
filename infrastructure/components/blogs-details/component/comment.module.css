@@ -16,3 +16,19 @@
 .inputWrapper {
     @apply flex flex-row items-center justify-center w-full
 }
+
+.commentListWrapper {
+    @apply flex flex-col w-full
+}
+
+.comment {
+    @apply flex items-center justify-center mb-10
+}
+
+.author {
+    @apply flex items-center justify-center w-64 h-64 bg-primary text-white  rounded-full overflow-hidden text-ellipsis text-14 text-justify max-h-[50px] overflow-hidden
+}
+
+.content {
+    @apply flex flex-col w-full ml-10
+}

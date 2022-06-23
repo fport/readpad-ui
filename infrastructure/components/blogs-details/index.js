@@ -1,8 +1,8 @@
 import { Container, Content, Header, Comment } from './component'
 import styles from './index.module.css'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
-import { create } from '@redux/actions/commentAction'
+import { useEffect, useState } from 'react'
+import { create, getCommentsBlog } from '@redux/actions/commentAction'
 import { useDispatch, useSelector } from 'react-redux'
 
 export default function BlogsDetails() {
@@ -11,6 +11,9 @@ export default function BlogsDetails() {
 
     const blogInfoData = useSelector((state) => state.blogInfo)
     const { blogList } = blogInfoData
+
+    const commentData = useSelector((state) => state.comment)
+    const { commentList } = commentData
 
     const idx = asPath.split('/')[2]
     const selectedBlog = blogList?.find((d) => d?.blog_id == idx)
@@ -26,6 +29,14 @@ export default function BlogsDetails() {
         setComment(e.target.value)
     }
 
+    const getComments = () => {
+        dispatch(
+            getCommentsBlog({
+                id: selectedBlog?.blog_id
+            })
+        )
+    }
+
     const submitComment = () => {
         dispatch(
             create({
@@ -36,7 +47,12 @@ export default function BlogsDetails() {
             })
         )
         setComment('')
+        getComments()
     }
+
+    useEffect(() => {
+        getComments()
+    }, [])
 
     return (
         <Container>
@@ -50,6 +66,7 @@ export default function BlogsDetails() {
                     }}
                     submitComment={() => submitComment()}
                     comment={comment}
+                    commentList={commentList}
                 />
                 <div className={styles.authorInfo}>
                     <span>{selectedBlog?.blog_author}</span>
