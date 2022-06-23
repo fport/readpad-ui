@@ -25,7 +25,7 @@ export default function SidePanel(props) {
                 <img className={styles.userImg} src="/user.png" />
             </div>
             <div className={styles.infoWrapper}>
-                <span className={styles.userName}>Osman Abi</span>
+                <span className={styles.userName}>{p.userName || 'osman abi'}</span>
                 <div className={styles.groupWrapper}>
                     <span className={styles.dot} />
                     <span className={styles.groupTitle}>Bloglarim</span>

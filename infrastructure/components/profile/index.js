@@ -10,7 +10,7 @@ export default function Profile() {
     const dispatch = useDispatch()
     const userInfoData = useSelector((state) => state.userInfo)
     const blogInfoData = useSelector((state) => state.blogInfo)
-    const { id } = userInfoData?.userInfo
+    const { id, userNameuserSurname } = userInfoData?.userInfo
     const { loading, blogInfo, blogs } = blogInfoData
     const [showModal, setShowModal] = useState(false)
     const [isAuthenticated] = useAuth()
@@ -50,6 +50,7 @@ export default function Profile() {
                     logoutUser={() => {
                         logoutUser()
                     }}
+                    userName={userNameuserSurname}
                 />
                 <Modal
                     changeShowModal={() => {
