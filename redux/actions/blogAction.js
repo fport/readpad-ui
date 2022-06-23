@@ -5,7 +5,10 @@ import {
     BLOG_CREATE_FAIL,
     GET_USER_BLOGS_REQUEST,
     GET_USER_BLOGS_SUCCESS,
-    GET_USER_BLOGS_FAIL
+    GET_USER_BLOGS_FAIL,
+    GET_ALL_BLOGS_REQUEST,
+    GET_ALL_BLOGS_SUCCESS,
+    GET_ALL_BLOGS_FAIL
 } from '../constants/blogAction'
 import { TOAST_ACTION_SUCCESS, TOAST_ACTION_CLEAR } from '../constants/runtimeConstant'
 
@@ -69,14 +72,12 @@ export const create = (createData) => async (dispatch) => {
 export const getUserBlogs =
     ({ id }) =>
     async (dispatch) => {
-        console.log('asdasd')
         try {
             dispatch({
                 type: GET_USER_BLOGS_REQUEST
             })
 
             const res = await axios(`blog/${id}`, { method: 'GET' }).then((response) => {
-                console.log('response?.data', response?.data?.data)
                 dispatch({
                     type: GET_USER_BLOGS_SUCCESS,
                     payload: {
@@ -110,3 +111,27 @@ export const getUserBlogs =
             }, 1000)
         }
     }
+
+// GET ALL BLOGS
+export const getAllBlogs = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: GET_ALL_BLOGS_REQUEST
+        })
+
+        const res = await axios(`blog/all`, { method: 'GET' }).then((response) => {
+            dispatch({
+                type: GET_ALL_BLOGS_SUCCESS,
+                payload: {
+                    isSuccesful: response?.data?.massage && true,
+                    data: response?.data?.data
+                }
+            })
+        })
+    } catch (error) {
+        dispatch({
+            type: GET_ALL_BLOGS_FAIL,
+            payload: 'Bloglar yuklenirken bir sorun ile karsilasildi'
+        })
+    }
+}

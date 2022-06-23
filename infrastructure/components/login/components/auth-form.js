@@ -1,7 +1,6 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import styles from './auth-form.module.css'
-import Router from 'next/router'
 import { login } from '@redux/actions/userAction'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
@@ -33,35 +32,37 @@ export default function AuthForm() {
     return (
         <div className={styles.authformWrapper}>
             <form className={styles.formWrapper} onSubmit={formik.handleSubmit}>
-                <label className="mt-5" htmlFor="email">
-                    Email
-                </label>
                 <input
                     id="email"
                     name="email"
                     type="email"
                     onChange={formik.handleChange}
                     value={formik.values.email}
-                    className="input input-bordered my-8 input-info w-full max-w-xs"
+                    className={styles.inputWrapper}
+                    placeholder="Email"
                 />
                 {formik.touched.email && formik.errors.email ? (
                     <div>{formik.errors.email}</div>
                 ) : null}
-                <label htmlFor="password">Parola</label>
                 <input
                     id="password"
                     name="password"
                     type="password"
                     onChange={formik.handleChange}
                     value={formik.values.password}
-                    className="input input-bordered my-8 input-info w-full max-w-xs"
+                    className={styles.inputWrapper}
+                    placeholder="Parola"
                 />
                 {formik.touched.password && formik.errors.password ? (
                     <div>{formik.errors.password}</div>
                 ) : null}
-                <button type="submit">Giris Yap</button>
+                <button className={styles.btnLoginWrapper} type="submit">
+                    Giris Yap
+                </button>
             </form>
-            {/* <button onClick={() => register()}>Uye Ol</button> */}
+            <Link href={'/register'}>
+                <button className={styles.btnWrapper}>Uye Ol</button>
+            </Link>
         </div>
     )
 }

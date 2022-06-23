@@ -24,7 +24,8 @@ export default function Profile() {
     }
 
     const logoutUser = () => {
-        dispatch(logout())
+        dispatch(logout({}))
+        Router.push('/login')
     }
 
     useEffect(() => {

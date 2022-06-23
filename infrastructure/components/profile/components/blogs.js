@@ -3,8 +3,7 @@ import { useMemo } from 'react'
 
 export default function Blogs({ blogs }) {
     const renderBlogs = useMemo(() => {
-        console.log('osman render')
-        return blogs.map((blog) => (
+        return blogs?.map((blog) => (
             <div key={blog.id} className={styles.blog}>
                 <div>
                     <h2 className={styles.blogTitle}>{blog.blog_title}</h2>

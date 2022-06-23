@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './modal.module.css'
 import { X } from 'react-feather'
 import { useFormik } from 'formik'
@@ -37,6 +37,17 @@ export default function Modal(props) {
             })
         )
     }
+
+    // const osman = () => {
+    //     document.getElementById('body')?.scrollTop(0).scrollIntoView({ behavior: 'smooth' })
+    // }
+
+    // useEffect(() => {
+    //     if (window !== 'undefined') {
+    //         console.log('osman')
+    //         osman()
+    //     }
+    // }, [])
 
     return (
         <>
