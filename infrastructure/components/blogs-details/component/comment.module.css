@@ -1,0 +1,18 @@
+.commentWrapper {
+    @apply flex flex-col mt-10
+}
+
+.commentWrapper {
+    @apply w-full h-fit
+}
+.commentInput {
+    @apply input input-bordered input-info w-full h-32 my-10
+}
+
+.btnWrapper {
+    @apply flex flex-row items-center justify-end w-32 h-32 bg-primary text-white rounded-full shadow-lg text-center flex items-center justify-center p-6 ml-10
+}
+
+.inputWrapper {
+    @apply flex flex-row items-center justify-center w-full
+}
