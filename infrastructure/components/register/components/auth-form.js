@@ -43,7 +43,6 @@ export default function AuthForm() {
     return (
         <div className={styles.authformWrapper}>
             <form className={styles.formWrapper} onSubmit={formik.handleSubmit}>
-                <label htmlFor="firstName">Isim</label>
                 <input
                     id="firstName"
                     name="firstName"
@@ -51,12 +50,12 @@ export default function AuthForm() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.firstName}
-                    className="input input-bordered my-8 input-info w-full max-w-xs"
+                    placeholder="Isim"
+                    className={styles.inputWrapper}
                 />
                 {formik.touched.firstName && formik.errors.firstName ? (
                     <div>{formik.errors.firstName}</div>
                 ) : null}
-                <label htmlFor="lastName">Soyisim</label>
                 <input
                     id="lastName"
                     name="lastName"
@@ -64,52 +63,51 @@ export default function AuthForm() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.lastName}
-                    className="input input-bordered my-8 input-info w-full max-w-xs"
+                    className={styles.inputWrapper}
+                    placeholder="Soyisim"
                 />
                 {formik.touched.lastName && formik.errors.lastName ? (
                     <div>{formik.errors.lastName}</div>
                 ) : null}
-                <label className="mt-5" htmlFor="email">
-                    Email
-                </label>
                 <input
                     id="email"
                     name="email"
                     type="email"
                     onChange={formik.handleChange}
                     value={formik.values.email}
-                    className="input input-bordered my-8 input-info w-full max-w-xs"
+                    className={styles.inputWrapper}
+                    placeholder="Email"
                 />
                 {formik.touched.email && formik.errors.email ? (
                     <div>{formik.errors.email}</div>
                 ) : null}
-                <label htmlFor="lastName">Parola</label>
                 <input
                     id="password"
                     name="password"
                     type="password"
                     onChange={formik.handleChange}
                     value={formik.values.password}
-                    className="input input-bordered my-8 input-info w-full max-w-xs"
+                    className={styles.inputWrapper}
+                    placeholder="Parola"
                 />
                 {formik.touched.password && formik.errors.password ? (
                     <div>{formik.errors.password}</div>
                 ) : null}
-                <label className="mt-5" htmlFor="email">
-                    Telefon Numarası
-                </label>
                 <input
                     id="phoneNumber"
                     name="phoneNumber"
                     type="text"
                     onChange={formik.handleChange}
                     value={formik.values.phoneNumber}
-                    className="input input-bordered my-8 input-info w-full max-w-xs"
+                    className={styles.inputWrapper}
+                    placeholder="Telefon Numarası"
                 />
                 {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
                     <div>{formik.errors.phoneNumber}</div>
                 ) : null}
-                <button type="submit">Uye Ol</button>
+                <button className={styles.btnLoginWrapper} type="submit">
+                    Uye Ol
+                </button>
             </form>
         </div>
     )

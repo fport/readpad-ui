@@ -5,3 +5,11 @@
 .formWrapper {
     @apply flex flex-col w-full p-20 max-w-400
 }
+
+.btnLoginWrapper {
+    @apply btn w-full w-full mt-10 bg-primary border-none rounded-l-md
+}
+
+.inputWrapper {
+    @apply input input-bordered my-8 input-info w-full
+}

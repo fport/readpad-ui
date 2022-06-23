@@ -3,7 +3,7 @@
 }
 
 .title {
-    @apply text-24 pl-10 w-full h-64 bg-primary rounded mb-20
+    @apply text-24 pl-10 w-full h-64 bg-primary rounded mb-20 text-center text-white pt-10
 }
 
 .langingBlogs {
@@ -11,11 +11,11 @@
 }
 
 .blogWrapper {
-    @apply grid grid-rows-4 grid-flow-col gap-4 h-full  justify-around	
+    @apply flex flex-wrap -mx-2 overflow-hidden sm:-mx-1
 }
 
 .blog {
-    @apply flex w-200 h-200 mb-10 shadow bg-secondary rounded-sm  items-center justify-center text-center
+    @apply my-2 px-2 w-1/3 overflow-hidden mb-10 shadow bg-secondary rounded-sm flex flex-col m-2 items-center justify-center text-center sm:px-1 sm:w-full md:w-1/3 p-8
 }
 
 .blogTitle {
@@ -23,9 +23,17 @@
 }
 
 .blogSummary {
-    @apply text-center text-white text-14
+    @apply text-center text-white text-14 max-h-[100px] overflow-hidden
 }
 
 .blogButton {
     @apply flex btn btn-primary btn-sm mt-10
+}
+
+.iconWrapper {
+    @apply flex w-full items-center justify-center bg-primary w-32 h-32 rounded text-white mx-2 cursor-pointer text-16
+}
+
+.actionWrapper {
+    @apply flex w-full items-center justify-center p-10
 }

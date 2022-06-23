@@ -15,7 +15,7 @@
 }
 
 .blogDesc {
-    @apply overflow-hidden text-ellipsis text-14 text-justify
+    @apply overflow-hidden text-ellipsis text-14 text-justify max-h-[150px] overflow-hidden
 }
 
 .dirc {

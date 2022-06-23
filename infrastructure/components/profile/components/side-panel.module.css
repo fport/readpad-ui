@@ -1,5 +1,5 @@
 .container {
-    @apply flex flex-col w-200 h-500 mr-48 border-dashed border-r-2
+    @apply flex flex-col w-200 h-500 mr-48 border-dashed border-r-2 pr-10
 }
 
 .imgWrapper {

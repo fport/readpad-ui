@@ -1,38 +1,32 @@
 import axios from '@utils/axios'
 import {
-    BLOG_CREATE_REQUEST,
-    BLOG_CREATE_SUCCESS,
-    BLOG_CREATE_FAIL,
-    GET_USER_BLOGS_REQUEST,
-    GET_USER_BLOGS_SUCCESS,
-    GET_USER_BLOGS_FAIL,
-    GET_ALL_BLOGS_REQUEST,
-    GET_ALL_BLOGS_SUCCESS,
-    GET_ALL_BLOGS_FAIL
-} from '../constants/blogAction'
+    COMMENT_CREATE_REQUEST,
+    COMMENT_CREATE_SUCCESS,
+    COMMENT_CREATE_FAIL,
+    GET_COMMENT_REQUEST,
+    GET_COMMENT_SUCCESS,
+    GET_COMMENT_FAIL
+} from '../constants/commentAction'
 import { TOAST_ACTION_SUCCESS, TOAST_ACTION_CLEAR } from '../constants/runtimeConstant'
-import { Cookies } from 'react-cookie'
-const cookies = new Cookies()
 
-// BLOG CREATE
+// COMMENT CREATE
 export const create = (createData) => async (dispatch) => {
     try {
         dispatch({
-            type: BLOG_CREATE_REQUEST
+            type: COMMENT_CREATE_REQUEST
         })
 
         const mappedData = {
-            blog_author: createData.author,
-            blog_title: createData.title,
-            blog_summary: createData.summary,
-            blog_content: createData.content,
-            user_user_id: createData.id
+            comment_author: createData.author,
+            comment_content: createData.content,
+            user_user_id: createData.userId,
+            blogs_blog_id: createData.blogId
         }
 
-        const res = await axios('blog', { method: 'POST', data: { ...mappedData } }).then(
+        const res = await axios('comment', { method: 'POST', data: { ...mappedData } }).then(
             (response) => {
                 dispatch({
-                    type: BLOG_CREATE_SUCCESS,
+                    type: COMMENT_CREATE_SUCCESS,
                     payload: {
                         isSuccesful: response?.data?.massage && true,
                         message: response?.data?.massage
@@ -51,7 +45,7 @@ export const create = (createData) => async (dispatch) => {
         )
     } catch (error) {
         dispatch({
-            type: BLOG_CREATE_FAIL,
+            type: COMMENT_CREATE_FAIL,
             payload: 'Create Blog failed'
         })
         dispatch({
@@ -66,13 +60,13 @@ export const create = (createData) => async (dispatch) => {
     }
 }
 
-// GET BLOGS BY USER ID
-export const getUserBlogs =
+// GET COMMENT TO BLOG
+export const getCommentsBlog =
     ({ id }) =>
     async (dispatch) => {
         try {
             dispatch({
-                type: GET_USER_BLOGS_REQUEST
+                type: GET_COMMENT_REQUEST
             })
 
             // const token = cookies.get('AUTH_TOKEN')
@@ -80,16 +74,17 @@ export const getUserBlogs =
             //     axios.defaults.headers.common.Authorization = `Bearer ${token}`
             // }
 
-            const res = await axios(`blog/${id}`, { method: 'GET' }).then((response) => {
+            const res = await axios(`comment/all/${id}`, { method: 'GET' }).then((response) => {
+                console.log('response', response?.data?.data)
                 dispatch({
-                    type: GET_USER_BLOGS_SUCCESS,
+                    type: GET_COMMENT_SUCCESS,
                     payload: {
                         isSuccesful: response?.data?.massage && true,
                         data: response?.data?.data
                     }
                 })
 
-                localStorage.setItem('blogInfo', JSON.stringify(response?.data?.data))
+                // localStorage.setItem('blogInfo', JSON.stringify(response?.data?.data))
 
                 dispatch({
                     type: TOAST_ACTION_SUCCESS,
@@ -103,7 +98,7 @@ export const getUserBlogs =
             })
         } catch (error) {
             dispatch({
-                type: GET_USER_BLOGS_FAIL,
+                type: GET_COMMENT_FAIL,
                 payload: 'Get Blogs failed'
             })
             dispatch({
@@ -117,29 +112,3 @@ export const getUserBlogs =
             }, 1000)
         }
     }
-
-// GET ALL BLOGS
-export const getAllBlogs = () => async (dispatch) => {
-    try {
-        dispatch({
-            type: GET_ALL_BLOGS_REQUEST
-        })
-
-        const res = await axios(`blog/all`, { method: 'GET' }).then((response) => {
-            dispatch({
-                type: GET_ALL_BLOGS_SUCCESS,
-                payload: {
-                    isSuccesful: response?.data?.massage && true,
-                    data: response?.data?.data
-                }
-            })
-
-            localStorage.setItem('blogList', JSON.stringify(response?.data?.data))
-        })
-    } catch (error) {
-        dispatch({
-            type: GET_ALL_BLOGS_FAIL,
-            payload: 'Bloglar yuklenirken bir sorun ile karsilasildi'
-        })
-    }
-}
