@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react'
 import styles from './comment.module.css'
 import { Send } from 'react-feather'
+import useAuth from '@hooks/useAuth'
 
 export default function Comment(props) {
     const p = props
-    console.log('p.commentList', p.commentList)
+    const [isAuthenticated] = useAuth()
     const renderInput = useMemo(() => {
         return (
             <input
@@ -19,15 +20,23 @@ export default function Comment(props) {
         )
     }, [props])
 
+    const isAvaibleComment = () => {
+        if (isAuthenticated) {
+            return (
+                <div className={styles.inputWrapper}>
+                    {renderInput}
+                    <button className={styles.btnWrapper} onClick={() => p.submitComment()}>
+                        <Send />
+                    </button>
+                </div>
+            )
+        }
+    }
+
     return (
         <div className={styles.commentWrapper}>
             <span>Yorumlar</span>
-            <div className={styles.inputWrapper}>
-                {renderInput}
-                <button className={styles.btnWrapper} onClick={() => p.submitComment()}>
-                    <Send />
-                </button>
-            </div>
+            {isAvaibleComment()}
 
             <div className={styles.commentListWrapper}>
                 {p.commentList?.map((d) => (

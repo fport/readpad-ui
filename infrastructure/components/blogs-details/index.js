@@ -1,7 +1,7 @@
 import { Container, Content, Header, Comment } from './component'
 import styles from './index.module.css'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { create, getCommentsBlog } from '@redux/actions/commentAction'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -29,14 +29,6 @@ export default function BlogsDetails() {
         setComment(e.target.value)
     }
 
-    const getComments = () => {
-        dispatch(
-            getCommentsBlog({
-                id: selectedBlog?.blog_id
-            })
-        )
-    }
-
     const submitComment = () => {
         dispatch(
             create({
@@ -47,12 +39,22 @@ export default function BlogsDetails() {
             })
         )
         setComment('')
-        getComments()
+        dispatch(
+            getCommentsBlog({
+                id: selectedBlog?.blog_id
+            })
+        )
     }
 
     useEffect(() => {
-        getComments()
-    }, [])
+        if (!selectedBlog?.blog_id) return
+
+        dispatch(
+            getCommentsBlog({
+                id: selectedBlog?.blog_id
+            })
+        )
+    }, [blogList])
 
     return (
         <Container>
